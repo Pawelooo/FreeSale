@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content%}
+
+    <form method="get" action="/product/" class="row">
+      <div class="col-6">
+        <input type="text" class="form-control" name="q" id="id_q" value="{{ query }}" placeholder="Wyszukaj"/>
+      </div>
+      <div class="col-3">
+
+        <select name="category" class="custom-select">
+          <option value="">Wszystkie produkty</option>
+          {% for category in categories %}
+              <option value="{{category.id}}" {{category.name}} {% if category.id == category_id %} selected{% endif %} >{{category.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-3 ">
+          <button type="submit" class="btn btn-outline-warning btn-block border-warning rounded ">Znajdź</button>
+      </div>
+
+    </form>
+
+<div class="mt-5 mb-5 row">
+
+ {% for product in object_list %}
+     <div class="col-3 mt-3 mb-3" >
+         <a href="{{product.id}}">
+         <div class="offert-list card border " >
+
+               {% if product.image %}
+                    <img src="{{product.image.url}}" class="ogłoszenie card-img-top ">
+               {% else %}
+                    <img  src="../../../media/no-image-icon.png" class="card-img-top ">
+             {% endif %}
+          <div class="card-body text-center">
+          {% if 'bold' in product.promotions %}
+              <bold>
+                <h5 class="card-title ">{{ product.name|slice:"0:30" }}{% if product.name|length > 30 %}...{% endif %}</h5>
+                <p class="card-text mt-2">{{ product.description|slice:"0:50" }}{% if product.description|length > 50 %}...{% endif %}</p>
+                <p class="zobacz col-12 text-center">Zobacz</p>
+              </bold>
+          {% else %}
+              <h5 class="card-title">{{ product.name|slice:"0:30" }}{% if product.name|length > 30 %}...{% endif %}</h5>
+                <p class="card-text mt-2">{{ product.description|slice:"0:50" }}{% if product.description|length > 50 %}...{% endif %}</p>
+                <p class="zobacz col-12 text-center">Zobacz ELO</p>
+          {% endif %}
+          </div>
+        </div>
+          </a>
+      </div>
+{% endfor %}
+</div>
+    <div class="znaki col-2 offset-5">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+            {% else %}
+                <li class="disabled mr-2 mt-1"><span><i class="fa fa-chevron-left" aria-hidden="true"></i></span></li>
+            {% endif %}
+            {% if page_obj.number|add:'-4' > 1 %}
+                <li><a class="mr-2 ml-3" href="?page={{ page_obj.number|add:'-5' }}">&hellip;</a></li>
+            {% endif %}
+
+            {% for i in page_obj.paginator.page_range %}
+                {% if page_obj.number == i %}
+                    <li class="active btn-outline-info p-2  "><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                {% elif i > page_obj.number|add:'-5' and i < page_obj.number|add:'5' %}
+                    <li><a class="button btn-outline-info mr-1 ml-1 p-1" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.paginator.num_pages > page_obj.number|add:'4' %}
+                <li><a class="mr-3 ml-2" href="?page={{ page_obj.number|add:'5' }}">&hellip;</a></li>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}" class=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+            {% else %}
+                <li class="disabled ml-2 mt-1"><span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+

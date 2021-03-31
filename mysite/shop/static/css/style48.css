@@ -1,0 +1,234 @@
+
+.card-shadow {
+    -webkit-box-shadow: 0px 0px 25px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 25px -3px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 25px -3px rgba(0,0,0,0.75);
+}
+
+.offer-single {
+    margin-bottom: 3rem;
+}
+
+.offer-single-contact {
+    padding: 1rem;
+}
+
+.offer-single-contact .left {
+    font-size: 18px;
+    padding-top: 0.7rem;
+}
+
+.card-text {
+    min-height: 3rem;
+}
+
+.card {
+    border: none;
+}
+
+.card:hover {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.card:hover a {
+    text-decoration: none;
+}
+.navbar {
+    font-size: 16px;
+    background-color: #4e91f0 !important;
+}
+
+#navbarNav h2 {
+    font-size: 30px;
+    font-family: 'Russo One', sans-serif;
+}
+.form-label{
+    font-size: 20px;
+}
+.fieldWrapper{
+    font-size: 18px;
+}
+.New-product{
+    background-color: #fff;
+}
+.find{
+    background-color: #f6cd95;
+
+}
+.all-products{
+    background-color: #f6cd95;
+}
+.login-in{
+    font-size: 16px;
+}
+.New-product btn-outline-warning{
+
+}
+.offert-list{
+    width: 15rem;
+}
+
+.card-body img {
+    width: 50%;
+}
+
+.offert-list img {
+    max-height: 15vh;
+}
+
+.offert-list .card-body {
+    margin-top: 0.7rem;
+}
+
+textarea {
+    width: 100%;
+    padding: 1.3rem;
+}
+
+select {
+    width: 100%;
+    padding: 1rem;
+}
+/* ------ BOOTSTRAP --------*/
+
+input {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 1.3rem;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+input:focus {
+  border-color: #f6cd95;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(246, 205, 149);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(246, 205, 149);
+}
+input::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+input:-ms-input-placeholder {
+  color: #999;
+}
+input::-webkit-input-placeholder {
+  color: #999;
+}
+input::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+input[disabled],
+input[readonly],
+fieldset[disabled] input {
+  background-color: #eee;
+  opacity: 1;
+}
+input[disabled],
+fieldset[disabled] input {
+  cursor: not-allowed;
+}
+textarea {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: none;
+}
+a:hover {
+    text-decoration: none;
+}
+.obrazek{
+    width: 50%;
+}
+.nazwa_kategori {
+    font-size: 17px;
+}
+.zobacz{
+    font-size: 17px;
+}
+.przycisk {
+    background-color: #f6cd95;
+    text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.stopka{
+    background-color: #71A7F3 !important;
+}
+.stopka-image{
+    width: 5% !important;
+    height: 5% !important;
+}
+.profil{
+    font-family: "Helvetica Neue";
+    font-size: 15px;
+}
+.freesale{
+    width: 275px !important;
+    height: 60px !important;
+}
+.freesale2{
+    font-size: 35px;
+    font-family: Courier;
+}
+#id_message{
+    height: 60px !important;
+    width: 80%;
+}
+.send{
+    background-color: #C9DEFA;
+}
+.user{
+    font-size: 20px;
+}
+.reset{
+    font-size: 12px;
+
+}
+.tworzenie{
+    font-size: 17px;
+}
+.znaki{
+    font-size: 24px;
+}
+.napis{
+    font-size: 18px;
+}
+.znak{
+    font-size: 24px;
+}
+.licznik{
+    padding: 10px 15px;
+    font-size: 18px;
+}
+.dane{
+    font-size: 20px;
+}
+.aktywny{
+    max-width: 15px;
+    max-height: 15px;
+    min-width: 15px;
+    background-color: #00e922;
+    border-radius: 50%;
+    max-height: 15px;
+
+}
+.ikonka{
+    margin-top: 15%;
+    font-size: 30px;
+}

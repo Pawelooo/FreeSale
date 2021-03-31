@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}
+    Nie znaleziono strony
+{% endblock %}
+{%  block content %}
+    <div class="col-10 offset-1">
+        <h2>Niestety, ale nie udało się znależć takiej strony </h2>
+        <img src="{% static 'image/404.png' %}">
+    </div>
+{% endblock %}

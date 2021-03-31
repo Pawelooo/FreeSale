@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}FreeSale{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {% load static %}
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style48.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="icon"
+      type="image/png"
+      href="{% static 'image/idea.png' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+    <a href="https://www.vecteezy.com/free-vector/people"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse ml-5" id="navbarNav">
+
+        <a class="freesale2 navbar-brand mt-2" href="{% url 'category_list' %}">FreeSale</a>
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+        <a class="nav-link" href="/product">Produkty</a>
+      </li>
+        {% if user.is_authenticated %}
+         <li class="nav-item">
+            <a href="{% url 'product_create'%}" class="nav-link">Dodaj Ogłoszenie</a>
+        </li>
+            <li class="nav-item">
+            <p class="nav-link">{{ user.user_info.balance}}</p>
+        </li>
+        <li class="nav-item">
+        <div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profil</a>
+             <div class="dropdown-menu p-3 profil" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/users/profile/update/{{ request.user.pk }}">Twój Profil</a>
+                 <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'users:conversations'%}">Wiadmości</a>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" href="{% url 'users:my_product'%}">Twoje Ogłoszenia</a>
+             </div>
+
+    </div>
+        </li>
+
+
+        <li class="logout nav-item pr-3 rounded">
+            <a class="logout nav-link text-center" href="/users/accounts/logout">Wyloguj</a>
+      </li>
+
+        {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="/users/accounts/login">Logowanie</a>
+      </li>
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link " href="/users/accounts/signup">Rejestracja</a>-->
+<!--      </li>-->
+        {% endif %}
+    </ul>
+  </div>
+  </div>
+</nav>
+
+{% csrf_token %}
+ {% for message in messages %}
+  <div class="alert col-6 offset-3 text-center {{ message.tags }} alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+{% endfor %}
+<div class="container">
+
+        </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-12">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{%  block footer %}
+<footer class="stopka bg-primary h-25 d-inline-block w-100 p-3">
+<div class="col-3 offset-5 d-inline-flex">
+
+    <img src="{% static 'image/copyright.png' %}" class="stopka-image mt-3"><p class="text-light ml-4 mt-3">Paweł Rutkowski</p>
+    <div class="col-2 text-center">
+        <a href="https://www.linkedin.com/in/pawe%C5%82-rutkowski-8a121b202/" ><i class="text-white linkedin rounded ikonka fab fa-linkedin-in"/></i></a>
+    </div>
+    <div class="col-2">
+        <a class="text-dark" href="https://github.com/Pawelooo"><i class="ikonka fab fa-github"></i></a>
+    </div>
+</div>
+</footer>
+{% endblock %}
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+}
+</script>
+</body>
+</html>

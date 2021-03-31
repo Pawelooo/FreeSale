@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content%}
+    <div class="col-4 offset-4">
+        <h2>Twoje Ogłoszenia</h2>
+    </div>
+
+    <div class="mt-5 mb-5 row">
+         {% for product in object_list %}
+          <div class="col-3 mt-3 mb-3" >
+              <a href="{% url 'product_detail' product.pk %}">
+            <div class="offert-list card border " >
+
+                   {% if product.image %}
+                        <img src="{{product.image.url}} " class="ogłoszenie card-img-top ">
+                   {% else %}
+                        <img  src="../../../media/no-image-icon.png" class="card-img-top ">
+                 {% endif %}
+              <div class="card-body text-center">
+                <h5 class="card-title">{{ product.name|slice:"0:30" }}{% if product.name|length > 30 %}...{% endif %}</h5>
+                    <p class="card-text mt-2">{{ product.description|slice:"0:50" }}{% if product.description|length > 50 %}...{% endif %}</p>
+                    <p class="zobacz col-12 text-center">Zobacz</p>
+              </div>
+            </div>
+              </a>
+          <div class="col-12 row  mt-2">
+
+        <div class="col-6 ">
+            <a href="{% url 'product_edit' product.pk%}" class="btn  btn-outline-success">Edytuj</a>
+
+        </div>
+         <div class="col-6 ">
+            <a href="{% url 'product_delete' product.pk%}" class="btn  btn-outline-danger">Usuń</a>
+        </div>
+    </div>
+
+
+
+          </div>
+        {% endfor %}
+    </div>
+    <div class="znaki center">
+    {% if is_paginated %}
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a class="licznik btn btn-outline-secondary znak" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="licznik disabled btn znak"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active licznik btn btn-info mr-1 ml-1"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a class="mr-1 ml-1 licznik button btn btn-outline-info" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <li><a class="licznik btn btn-outline-secondary znak" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled btn znak licznik"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+    </div>
+{% endblock %}

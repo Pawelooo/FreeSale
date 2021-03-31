@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content%}
+
+    <div class="form-group card-shadow col-12 mt-3">
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+      {{ form.non_field_errors }}
+      <div class="col-10 offset-1">
+          <h3 class="pt-5 mb-5 text-center">Dodawanie nowego produktu</h3>
+         <div class="fieldWrapper col-12 mb-3 text-center p-3">
+            {{ form.name.errors }}
+            <div class="label">
+                <label for="{{ form.name.id_for_label }}">Nazwa produktu</label>
+            </div>
+                {{ form.name }}
+        </div>
+        <div class="fieldWrapper col-12 mb-3 text-center">
+            {{ form.price.errors }}
+            <div class="price">
+                <label for="{{ form.price.id_for_label }}">Cena</label>
+            </div>
+                {{ form.price }}
+        </div>
+         <div class="fieldWrapper col-12 mb-3 text-center">
+            {{ form.description.errors }}
+            <div class="description">
+                <label for="{{ form.description.id_for_label }}">Opis</label>
+            </div>
+            {{ form.description }}
+        </div>
+        <div class="fieldWrapper col-12 mb-3 text-center">
+            {{ form.category.errors }}
+            <div class="category">
+                <label for="{{ form.category.id_for_label }}">Kategoria</label>
+            </div>
+            {{ form.category }}
+        </div>
+        <div class="fieldWrapper col-12 mb-3 text-center">
+            {{ form.image.errors }}
+            <div class="picture">
+                Obraz
+                <div class="text-center">
+                    <input required name="image" type="file" multiple class="form-control-file">
+                </div>
+            </div>
+
+        </div>
+        <div class="fieldWrapper offset-lg-3 col-lg-6 col-12 mt-5 pb-5 text-center">
+
+                <button type="submit" class="button btn btn-outline-dark">Dodaj produkt</button>
+
+        </div>
+          
+      </div>
+        </form>
+    <a href="/product/"  class="button btn btn-outline-secondary" >Anuluj</a>
+    </div>
+
+
+{% endblock %}
+
+

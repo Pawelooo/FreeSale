@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="mt-3 p-4 offset-lg-2 col-8 row offer-single card-shadow ">
+    <form action="" method="post" class="offset-lg-1 col-lg-10  p-5 text-center ">
+    {% csrf_token %}
+    <div class="col-12 mb-5">
+        <h2>Konto {{ user.username }}</h2>
+    </div>
+
+
+        <p>Imie {{ form.first_name }}</p>
+        <p>Nazwisko {{ form.last_name }}</p>
+        <p>E-mail {{ form.email }}</p>
+        Telefon {{ detail_form.phone }}
+        <p class="mt-3"> Awatar {{ detail_form.image }}</p>
+         <p class="mt-3">Twoje saldo : {{  user.user_info.balance}}</p>
+
+        <div class="row mt-5  mb-3 border">
+            <div class="col-4 mt-2">
+                Data dołączenia
+            </div>
+            <div class="col-4 mt-2">
+                <bold>Uprawnienia</bold>
+            </div>
+            <div class="col-4 text-center mt-2">
+                <p > <bold >Ostatnia aktywność</bold></p>
+            </div>
+        </div>
+    <div class="row mb-5 border">
+            <div class="col-4 mt-2 ">
+                {{ user.date_joined.date }}
+            </div>
+            <div class="col-4 mt-2">
+                {% if user.is_staff %}
+             <p> Admin</p>
+            {%  else %}
+                <p>Użytkownik</p>
+        {%  endif %}
+            </div>
+            <div class="col-4 mt-2">
+                {{ user.last_login }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-block btn-info d-block p-2 text-center">Potwierdź</button>
+
+    </form>
+    <form action="" method="post" class="col-12 text-right">
+        <div class="">
+            <button href="" type="submit" class=" btn btn-outline-danger p-1">Usuń Konto</button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

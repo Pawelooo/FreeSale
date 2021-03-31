@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content%}
+<form method="post">{% csrf_token %}
+    <div class="alert alert-danger" role="alert">
+    <h5 class="mt-0 text-center">Czy na pewno chcesz usunąć swoje ogłoszenie "{{ object }}"?</h5>
+    </div>
+    <div class="offset-4 col-4 text-center">
+        <button type="submit" class="btn btn-danger mb-2">Potwierdź</button>
+        <a href="{% url 'product_detail' object.pk%}" class="btn btn-outline-secondary mb-2">Anuluj</a>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content%}
+<div class="p-5 mb-5 row card-shadow">
+    <div class="col-12 mb-5">
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class=" text-center mb-5"><h3>Aktualizowanie ogłoszenia</h3></div>
+            <div class="fieldWrapper col-12 mb-4 text-center">
+                {{ form.name.errors }}
+                <div class="label">
+                    <label for="{{ form.name.id_for_label }}"><h5>Nazwa produktu</h5></label>
+                </div>
+                {{ form.name }}
+            </div>
+            <div class="fieldWrapper col-12 mb-4 text-center">
+                {{ form.price.errors }}
+                <div class="price">
+                    <label for="{{ form.price.id_for_label }}"><h5>Cena</h5></label>
+                </div>
+                {{ form.price }}
+            </div>
+             <div class="fieldWrapper col-12 mb-4 text-center">
+                {{ form.description.errors }}
+                <div class="description">
+                    <label for="{{ form.description.id_for_label }}"><h5>Opis</h5></label>
+
+                </div>
+                {{ form.description }}
+            </div>
+            <div class="fieldWrapper col-12 mb-4 text-center">
+                {{ form.category.errors }}
+                <div class="category">
+
+                    <label for="{{ form.category.id_for_label }}"><h5>Kategoria</h5></label>
+                </div>
+                {{ form.category }}
+            </div>
+            <div class="fieldWrapper col-12 mb-4 text-center">
+                {{ form.image.errors }}
+                <div class="picture">
+                    <label for="{{ form.image.id_for_label }}"><h5>Obraz</h5></label>
+                </div>
+                {{ form.image }}
+            </div>
+            <div class="fieldWrapper offset-lg-3 col-lg-6 col-12 mt-5 text-center">
+                <button type="submit" class="button btn btn-outline-dark" >Zaaktualizuj</button>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+</div>
+     <a href="{% url 'product_detail' object.pk%}" class="button btn btn-secondary">Anuluj</a>
+{% endblock %}

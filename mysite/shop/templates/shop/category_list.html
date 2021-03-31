@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content%}
+
+
+<div class="mt-5 row mb-5">
+ {% for category in object_list %}
+  <div class=" col-lg-3 col-md-4 col-12 mt-3 mb-3 text-center" >
+      <a href="{% url 'product_list'%}?category={{ category.id }}">
+          <div class="card-category ">
+
+            {% load static %}
+            {% if category.image %}
+                <a href="{% url 'product_list'%}?category={{ category.id }}">
+                <img src="{{category.image.url}} " class="obrazek card-img-top rounded-circle">
+
+            {% else %}
+
+                <img  src="../../static/image/image.jpg" class="card-img-top rounded-circle">
+
+                {% endif %}
+              <p class="nazwa_kategori text-center mt-4 font-weight-bold">{{ category.name }}</p>
+          </div>
+      </a>
+  </div>
+{% endfor %}
+</div>
+
+
+{% endblock %}

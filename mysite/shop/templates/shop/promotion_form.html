@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+     <div class="card-shadow p-5 col-8 offset-2 mb-5">
+         <div class="col-10 offset-1 mb-3 text-center pb-2">
+              <h2>Promuj swoje ogłoszenie</h2>
+          </div>
+        {{ form.as_p }}
+
+
+
+
+        <div class="fieldWrapper offset-lg-3 col-lg-6 col-12 mt-5 pb-5 text-center">
+            <button type="submit" class="button btn btn-outline-dark">Promuj </button>
+        </div>
+     </div>
+</form>
+
+
+{% endblock %}

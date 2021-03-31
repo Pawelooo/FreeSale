@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if not user.is_authenticated %}
+  <form method="post">
+    {% csrf_token %}
+      <div class="card-shadow p-5 col-10 offset-1 mb-5">
+          <div class="col-10 offset-1 mb-3 text-center pb-5">
+              <h2>Rejestracja</h2>
+          </div>
+          {{ errors }}
+    {{ form.as_p }}
+    <div class="col-4 offset-4 mt-5 mb-2">
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <div class="g-recaptcha" data-sitekey="6LdZN0caAAAAAPiGkhGcQaaZJOCPJlkUfxtCmfX_"></div>
+    </div>
+    <button class="p-3 mt-5 col-6 offset-3 text-center btn btn-info" type="submit">Zajerestruj się</button>
+    </div>
+  </form>
+
+
+
+{% endif %}
+{% endblock %}

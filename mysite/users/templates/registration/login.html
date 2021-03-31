@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="Login col-8 offset-2 p-5 card-shadow mt-3 mb-5">
+    <div class="col-12 mb-4 text-center mt-5">
+        <h2>Logowanie</h2>
+    </div>
+    <form method="post" >
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper col-10 offset-1 mt-4 mb-2 text-center">
+            {{ form.username.errors }}
+            <label class="form-label col-10" for="{{ form.username.id_for_label }}">Login</label>
+            {{ form.username }}
+        </div>
+        <div class="fieldWrapper col-10 offset-1 mt-2 mb-2 text-center">
+            <label class="form-label col-10" for="{{ form.password.id_for_label }}">Hasło</label>
+            {{ form.password }}
+
+    </div>
+        <div class="col-12 text-center mb-1 mt-3 pt-3">
+            <div class="login-in text-center btn ">
+                <button type="submit" class="login-in pl-5 pr-5 btn-info btn btn-block">Zaloguj się</button>
+                <a href="/users/accounts/password_reset" class="reset " >Nie pamiętasz hasła?</a>
+            </div>
+        </div>
+        <div class="col-12 text-center mt-5 pb-5">
+            <p class="tworzenie">Nie masz jeszcze konta ?</p>
+            <a href="/users/accounts/signup" class="createaccount btn btn-outline-success" >Stwórz nowe konto</a>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

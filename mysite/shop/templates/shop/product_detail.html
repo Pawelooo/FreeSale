@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{%  load hitcount_tags %}
+
+{% block content%}
+
+<div class="p-5 row offer-single card-shadow mt-3">
+    <div class="col-12 mb-5">
+      <div class="col-2 count mt-3 mb-5">
+            <p>Wyświetlenia: {%  get_hit_count for product %} <i class="fa fa-eye" aria-hidden="true"></i></p>
+    </div>
+
+        {% if object.image %}
+                <img src="{{object.image.url}} " class="card-img-top ">
+              {% else %}
+                <img  src="../../../media/no-image-icon.png" class="card-img-top ">
+              {% endif %}
+    </div>
+
+    <div class="col-6 mb-5">
+        <h3>{{ object.name }}</h3>
+    </div>
+    <div class="col-6 mt-5 text-right">
+        <h3>{{ object.price }} zł</h3>
+    </div>
+    <div class="col-12 text-justify mb-5 mt-5">
+        <p>{{ object.description }}</p>
+    </div>
+      <div class="col-6 text-left ">
+          <p class="pb-0 mb-0 bold">Kategoria</p>
+        <p class="font-weight-bold"><a href="/product/?category={{object.category.id}}"><bold>{{ object.category }}</bold></a></p>
+    </div>
+    <div class="user mt-5 col-6 text-right ">
+                <a href = "/users/profile/{{ object.user.pk }}" class="font-weight-bold ">{{ object.user }} </a>
+
+
+    </div>
+</div>
+
+<div class="offer-single-contact card-shadow row mb-5">
+    <div class="row container">
+        <div class="col-6 text-left left">
+            {% if object.user.user_info.phone %}
+                <i class="fas fa-phone-alt"></i> {{ object.user.user_info.phone }}
+            {% else %}
+                <i class="fas fa-phone-slash"></i> Brak numeru
+            {% endif %}
+        </div>
+        <div class="offset-3"></div>
+        <div class="col-3 text-right">
+           <a href="{%  url 'users:conversation_create'  %}?user_to={{ object.user_id }}"> <button type="button" href="" class="btn btn-block btn-primary" data-bs-toggle="modal" >
+              Wyślij Wiadomość
+            </button>
+           </a>
+        </div>
+    </div>
+</div>
+
+{% if object.user == request.user %}
+    <div class="row mt-5 mb-5">
+        <div class="offset-3"></div>
+        <div class="col-3 text-center">
+            <a href="{% url 'product_edit' object.pk%}" class="btn btn-block btn-lg btn-outline-success">Edytuj</a>
+
+        </div>
+         <div class="col-3 text-center">
+            <a href="{% url 'product_delete' object.pk%}" class="btn btn-block btn-lg btn-outline-danger">Usuń</a>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
